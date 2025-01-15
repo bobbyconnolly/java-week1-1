@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java OOP Guide - Pet Shop Edition</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: #2c3e50;
+        margin-top: 2rem;
+      }
+
+      pre {
+        background: #f8f9fa;
+        border-radius: 4px;
+        padding: 1rem;
+        overflow-x: auto;
+        border: 1px solid #e9ecef;
+        width: calc(100% - 2rem);
+      }
+
+      .keyword {
+        color: #0033b3;
+      }
+      .string {
+        color: #067d17;
+      }
+      .comment {
+        color: #8c8c8c;
+      }
+      .number {
+        color: #1750eb;
+      }
+      .type {
+        color: #000080;
+      }
+
+      .tip {
+        background: #e3f2fd;
+        padding: 1rem;
+        border-radius: 4px;
+        margin: 1rem 0;
+      }
+
+      .warning {
+        background: #fff3e0;
+        padding: 1rem;
+        border-radius: 4px;
+        margin: 1rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to Java! Let's Build a Pet Shop 🐾</h1>
+
+    <p>
+      Hey there! Ready to write your first Java program? We're going to build a simple pet shop system together. Don't
+      worry - we'll take it step by step, and you'll be creating objects in no time!
+    </p>
+
+    <h2>Step 1: Your First Java Class</h2>
+
+    <p>
+      First things first - let's make sure your environment is ready. You should see a file called Main.java with some
+      basic "Hello World" code. Let's start there:
+    </p>
+
+    <pre><span class="keyword">package</span> week1;
+
+<span class="keyword">import static</span> java.lang.System.out;
+
+<span class="keyword">public class</span> <span class="type">Main</span> {
+    <span class="keyword">public static void</span> main(<span class="type">String</span>[] args) {
+        <span class="comment">// This line prints to your console</span>
+        out.println(<span class="string">"Hello World"</span>);
+    }
+}</pre>
+
+    <p>
+      Go ahead and run this code (click the green play button ▶️). You should see "Hello World" appear in your console.
+      Congratulations - you've just run your first Java program! 🎉
+    </p>
+
+    <h2>Step 2: Creating Our Pet Class</h2>
+
+    <p>
+      Now for the fun part! We're going to create a new class to represent pets in our shop. Right-click on your week1
+      folder, select New → Java Class, and name it "Pet".
+    </p>
+
+    <div class="tip">
+      <strong>Pro Tip:</strong> In Java, we usually start class names with a capital letter (like "Pet" not "pet"). This
+      is a naming convention that helps other programmers read your code better!
+    </div>
+
+    <p>In your new Pet.java file, let's add some basic information that every pet should have:</p>
+
+    <pre><span class="keyword">package</span> week1;
+
+<span class="keyword">public class</span> <span class="type">Pet</span> {
+    <span class="keyword">public</span> <span class="type">String</span> name;
+    <span class="keyword">public</span> <span class="type">String</span> type;
+    <span class="keyword">public</span> <span class="type">int</span> age;
+}</pre>
+
+    <p>
+      Look at those three lines inside the class - we just created what we call "fields" or "properties". Each pet will
+      have:
+    </p>
+    <ul>
+      <li>A name (like "Buddy" or "Whiskers")</li>
+      <li>A type (like "dog" or "cat")</li>
+      <li>An age (a whole number)</li>
+    </ul>
+
+    <h2>Step 3: Your First Constructor</h2>
+
+    <p>
+      Next up: let's add a way to create new pets! We'll add something called a "constructor" - it's like a special
+      recipe for making new pets:
+    </p>
+
+    <pre><span class="keyword">public</span> Pet(<span class="type">String</span> name, <span class="type">String</span> type, <span class="type">int</span> age) {
+    <span class="keyword">this</span>.name = name;
+    <span class="keyword">this</span>.type = type;
+    <span class="keyword">this</span>.age = age;
+}</pre>
+
+    <div class="warning">
+      <strong>Watch Out!</strong> Make sure to put this constructor <em>inside</em> your Pet class, but not inside any
+      other method. The placement matters!
+    </div>
+
+    <h2>Step 4: Creating Your First Pet!</h2>
+
+    <p>
+      Time to put your Pet class to work! Let's head back to Main.java and create some furry friends. Update your main
+      method to look like this:
+    </p>
+
+    <pre><span class="keyword">public static void</span> main(<span class="type">String</span>[] args) {
+    Pet myPet = <span class="keyword">new</span> Pet(<span class="string">"Buddy"</span>, <span class="string">"dog"</span>, <span class="number">3</span>);
+    out.println(<span class="string">"My pet's name is "</span> + myPet.name);
+}</pre>
+
+    <p>Run this code and... ta-da! 🎉 You should see "My pet's name is Buddy" in the console. You've just:</p>
+    <ul>
+      <li>Created your first Pet object (Buddy the dog)</li>
+      <li>Used the constructor we wrote earlier</li>
+      <li>Accessed one of its properties (name)</li>
+    </ul>
+
+    <div class="warning">
+      <strong>Common Gotcha!</strong> If you try to create a Pet without providing all three pieces of information (like
+      <code>new Pet()</code>), Java will complain. All three parameters are required!
+    </div>
+
+    <h2>Step 5: Let's Add Another Pet!</h2>
+
+    <p>
+      One pet is nice, but a pet shop needs more than that! Let's create another pet and print information about both:
+    </p>
+
+    <pre><span class="keyword">public static void</span> main(<span class="type">String</span>[] args) {
+    Pet myPet = <span class="keyword">new</span> Pet(<span class="string">"Buddy"</span>, <span class="string">"dog"</span>, <span class="number">3</span>);
+    Pet anotherPet = <span class="keyword">new</span> Pet(<span class="string">"Whiskers"</span>, <span class="string">"cat"</span>, <span class="number">5</span>);
+
+    out.println(<span class="string">"My pets:"</span>);
+    out.println(<span class="string">"- "</span> + myPet.name + <span class="string">" ("</span> + myPet.type + <span class="string">"), "</span> + myPet.age + <span class="string">" years old"</span>);
+    out.println(<span class="string">"- "</span> + anotherPet.name + <span class="string">" ("</span> + anotherPet.type + <span class="string">"), "</span> + anotherPet.age + <span class="string">" years old"</span>);
+}</pre>
+
+    <p>When you run this, you'll see a nice formatted list of your pets! 🐱🐶</p>
+
+    <h2>Your Turn - Practice Time! 💪</h2>
+
+    <p>Now that you know how to create pets, try these challenges:</p>
+
+    <ol>
+      <li>Create a third pet with different values</li>
+      <li>Print all three pets in the same format as above</li>
+      <li>
+        Extra challenge: Can you modify the output format to show something like:
+        <pre>
+🏪 MY PET SHOP 🏪
+- Buddy is a 3-year-old dog
+- Whiskers is a 5-year-old cat</pre
+        >
+      </li>
+    </ol>
+
+    <div class="tip">
+      <strong>Remember:</strong> You can use the + operator to combine text (strings) and numbers in your output. Java
+      will automatically convert the numbers to text for you!
+    </div>
+
+    <h2>What We've Learned 🎓</h2>
+
+    <p>Congratulations! You've just learned some fundamental concepts in Java:</p>
+    <ul>
+      <li>How to create a class with properties</li>
+      <li>How to write a constructor</li>
+      <li>How to create objects using your class</li>
+      <li>How to access object properties</li>
+    </ul>
+
+    <p>Next, we'll learn how to add behavior to our pets - maybe teach them some tricks! 🦮</p>
+
+    <h2>Adding Some Action - Pet Methods! 🎬</h2>
+
+    <p>
+      Our pets look great on paper, but they're a bit... quiet. Let's teach them how to make sounds! In Java, we can add
+      behavior to our objects using methods.
+    </p>
+
+    <p>Head back to your Pet class and let's add a makeSound() method:</p>
+
+    <pre><span class="keyword">public class</span> <span class="type">Pet</span> {
+    <span class="keyword">public</span> <span class="type">String</span> name;
+    <span class="keyword">public</span> <span class="type">String</span> type;
+    <span class="keyword">public</span> <span class="type">int</span> age;
+    
+    <span class="keyword">public</span> Pet(<span class="type">String</span> name, <span class="type">String</span> type, <span class="type">int</span> age) {
+        <span class="keyword">this</span>.name = name;
+        <span class="keyword">this</span>.type = type;
+        <span class="keyword">this</span>.age = age;
+    }
+
+    <span class="keyword">public</span> <span class="type">String</span> makeSound() {
+        <span class="keyword">if</span> (type.equals(<span class="string">"dog"</span>)) {
+            <span class="keyword">return</span> <span class="string">"Woof!"</span>;
+        } <span class="keyword">else if</span> (type.equals(<span class="string">"cat"</span>)) {
+            <span class="keyword">return</span> <span class="string">"Meow!"</span>;
+        } <span class="keyword">else</span> {
+            <span class="keyword">return</span> <span class="string">"*mysterious pet noises*"</span>;
+        }
+    }
+}</pre>
+
+    <div class="tip">
+      <strong>Quick Tip:</strong> When comparing Strings in Java, we use .equals() instead of ==. It's a quirk of Java
+      that trips up even experienced programmers!
+    </div>
+
+    <p>Now let's update our Main class to make our pets speak:</p>
+
+    <pre><span class="keyword">public static void</span> main(<span class="type">String</span>[] args) {
+    Pet myPet = <span class="keyword">new</span> Pet(<span class="string">"Buddy"</span>, <span class="string">"dog"</span>, <span class="number">3</span>);
+    Pet anotherPet = <span class="keyword">new</span> Pet(<span class="string">"Whiskers"</span>, <span class="string">"cat"</span>, <span class="number">5</span>);
+
+    <span class="comment">// Let's make them speak!</span>
+    out.println(myPet.name + <span class="string">" says: "</span> + myPet.makeSound());
+    out.println(anotherPet.name + <span class="string">" says: "</span> + anotherPet.makeSound());
+}</pre>
+
+    <h2>Final Challenge - Build Your Pet Shop! 🏪</h2>
+
+    <p>Ready to put everything together? Let's build this step by step:</p>
+
+    <h3>Step 1: Create Your Pets</h3>
+    <p>First, create three different pets with different types and ages:</p>
+    <pre><span class="keyword">public static void</span> main(<span class="type">String</span>[] args) {
+    Pet buddy = <span class="keyword">new</span> Pet(<span class="string">"Buddy"</span>, <span class="string">"dog"</span>, <span class="number">3</span>);
+    Pet whiskers = <span class="keyword">new</span> Pet(<span class="string">"Whiskers"</span>, <span class="string">"cat"</span>, <span class="number">5</span>);
+    Pet bubbles = <span class="keyword">new</span> Pet(<span class="string">"Bubbles"</span>, <span class="string">"fish"</span>, <span class="number">1</span>);
+}</pre>
+
+    <h3>Step 2: Add Your Welcome Message</h3>
+    <p>Add a nice header to your pet shop:</p>
+    <pre>    out.println(<span class="string">"🏪 WELCOME TO JAVA PET SHOP 🏪\n"</span>);
+    out.println(<span class="string">"Our adorable pets:"</span>);</pre>
+
+    <h3>Step 3: Display Your Pets</h3>
+    <p>For each pet, print their details and make them speak. Try this first:</p>
+    <pre>    <span class="comment">// Print Buddy's details</span>
+    out.println(<span class="string">"- "</span> + buddy.name + <span class="string">" ("</span> + buddy.type + <span class="string">"), "</span> + 
+               buddy.age + <span class="string">" years old"</span>);
+    out.println(<span class="string">"  "</span> + buddy.name + <span class="string">" says: "</span> + buddy.makeSound());</pre>
+
+    <div class="tip">
+      <strong>Notice something?</strong> You'll need to write similar code for Whiskers and Bubbles. Seems like a lot of
+      repetition... is there a better way? 🤔
+    </div>
+
+    <h3>Step 4: Make It Better!</h3>
+    <p>Instead of copying and pasting the same code for each pet, try creating a helper method! Here's how:</p>
+
+    <ol>
+      <li>Add this method outside of main (but still inside the Main class):</li>
+    </ol>
+    <pre><span class="keyword">private static void</span> printPetDetails(Pet pet) {
+    out.println(<span class="string">"- "</span> + pet.name + <span class="string">" ("</span> + pet.type + <span class="string">"), "</span> + 
+               pet.age + <span class="string">" years old"</span>);
+    out.println(<span class="string">"  "</span> + pet.name + <span class="string">" says: "</span> + pet.makeSound());
+}</pre>
+
+    <p>Now you can just use this method for each pet:</p>
+    <pre>
+    printPetDetails(buddy);
+    printPetDetails(whiskers);
+    printPetDetails(bubbles);</pre
+    >
+
+    <h3>Final Step: Add a Closing Message</h3>
+    <pre>    out.println(<span class="string">"\nCome adopt a friend today! 🐾"</span>);</pre>
+
+    <p>Run your code - you should see something like this:</p>
+    <pre>
+🏪 WELCOME TO JAVA PET SHOP 🏪
+
+Our adorable pets:
+- Buddy (dog), 3 years old
+  Buddy says: Woof!
+- Whiskers (cat), 5 years old
+  Whiskers says: Meow!
+- Bubbles (fish), 1 years old
+  Bubbles says: *mysterious pet noises*
+
+Come adopt a friend today! 🐾</pre
+    >
+
+    <div class="tip">
+      <strong>Extra Credit:</strong> Try creating a hamster! What sound should it make? You'll need to add another
+      condition in the makeSound() method.
+    </div>
+
+    <h2>You Did It! 🎉</h2>
+
+    <p>Look how far you've come! You've learned:</p>
+    <ul>
+      <li>How to create a class with properties</li>
+      <li>How to make a constructor</li>
+      <li>How to create objects</li>
+      <li>How to add methods (behaviors)</li>
+      <li>How to make decisions using if/else</li>
+    </ul>
+
+    <p>Next time we'll learn about:</p>
+    <ul>
+      <li>Private fields and why we might want them</li>
+      <li>Getters and setters</li>
+      <li>More complex behaviors</li>
+    </ul>
+
+    <p>Keep your code handy - we'll build on it in the next lesson! 👩‍💻👨‍💻</p>
+  </body>
+</html>
